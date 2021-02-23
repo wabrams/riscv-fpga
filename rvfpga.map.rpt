@@ -1,0 +1,1495 @@
+Analysis & Synthesis report for rvfpga
+Mon Feb 22 19:44:22 2021
+Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis IP Cores Summary
+ 10. State Machine - |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|state
+ 11. State Machine - |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|state
+ 12. State Machine - |rvfpga|kronos_core:U_CORE|kronos_IF:u_if|state
+ 13. Registers Removed During Synthesis
+ 14. Removed Registers Triggering Further Register Optimizations
+ 15. General Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Source assignments for instr_rom:U_ROM_INSTR|altsyncram:altsyncram_component|altsyncram_5lg1:auto_generated
+ 18. Source assignments for data_ram:U_RAM_DATA|altsyncram:altsyncram_component|altsyncram_o002:auto_generated
+ 19. Parameter Settings for User Entity Instance: pll_clock:U_PLL|pll_clock_0002:pll_clock_inst|altera_pll:altera_pll_i
+ 20. Parameter Settings for User Entity Instance: clkdiv:U_CLKDIV
+ 21. Parameter Settings for User Entity Instance: instr_rom:U_ROM_INSTR|altsyncram:altsyncram_component
+ 22. Parameter Settings for User Entity Instance: data_ram:U_RAM_DATA|altsyncram:altsyncram_component
+ 23. Parameter Settings for User Entity Instance: kronos_core:U_CORE
+ 24. Parameter Settings for User Entity Instance: kronos_core:U_CORE|kronos_IF:u_if
+ 25. Parameter Settings for User Entity Instance: kronos_core:U_CORE|kronos_ID:u_id
+ 26. Parameter Settings for User Entity Instance: kronos_core:U_CORE|kronos_ID:u_id|kronos_agu:u_agu
+ 27. Parameter Settings for User Entity Instance: kronos_core:U_CORE|kronos_EX:u_ex
+ 28. Parameter Settings for User Entity Instance: kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr
+ 29. Parameter Settings for User Entity Instance: kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|kronos_counter64:u_hpmcounter0
+ 30. Parameter Settings for User Entity Instance: kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|kronos_counter64:u_hpmcounter1
+ 31. altsyncram Parameter Settings by Entity Instance
+ 32. Port Connectivity Checks: "kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|kronos_counter64:u_hpmcounter0"
+ 33. Port Connectivity Checks: "kronos_core:U_CORE"
+ 34. Port Connectivity Checks: "data_ram:U_RAM_DATA"
+ 35. Post-Synthesis Netlist Statistics for Top Partition
+ 36. Elapsed Time Per Partition
+ 37. Analysis & Synthesis Messages
+ 38. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Feb 22 19:44:22 2021           ;
+; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Standard Edition ;
+; Revision Name                   ; rvfpga                                          ;
+; Top-level Entity Name           ; rvfpga                                          ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 1892                                            ;
+; Total pins                      ; 168                                             ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 163,840                                         ;
+; Total DSP Blocks                ; 0                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 1                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSXFC6D6F31C6     ;                    ;
+; Top-level entity name                                                           ; rvfpga             ; rvfpga             ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Verilog Show LMF Mapping Messages                                               ; Off                ;                    ;
+; Verilog Version                                                                 ; SystemVerilog_2005 ; Verilog_2001       ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                     ;
++-------------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------+-----------+
+; File Name with User-Entered Path    ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                  ; Library   ;
++-------------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------+-----------+
+; qip/data_ram.v                      ; yes             ; User Wizard-Generated File             ; C:/Users/Will/Documents/GitHub/riscv-fpga/qip/data_ram.v                      ;           ;
+; rtl/iodrivers/clkdiv.sv             ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/iodrivers/clkdiv.sv             ;           ;
+; rtl/iodrivers/led.sv                ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/iodrivers/led.sv                ;           ;
+; rtl/iodrivers/btn.sv                ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/iodrivers/btn.sv                ;           ;
+; rtl/iodrivers/hex.sv                ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/iodrivers/hex.sv                ;           ;
+; rtl/kronos_core/kronos_types.sv     ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_types.sv     ;           ;
+; rtl/kronos_core/kronos_RF.sv        ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_RF.sv        ;           ;
+; rtl/kronos_core/kronos_lsu.sv       ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_lsu.sv       ;           ;
+; rtl/kronos_core/kronos_IF.sv        ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_IF.sv        ;           ;
+; rtl/kronos_core/kronos_ID.sv        ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_ID.sv        ;           ;
+; rtl/kronos_core/kronos_hcu.sv       ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_hcu.sv       ;           ;
+; rtl/kronos_core/kronos_EX.sv        ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_EX.sv        ;           ;
+; rtl/kronos_core/kronos_csr.sv       ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_csr.sv       ;           ;
+; rtl/kronos_core/kronos_counter64.sv ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_counter64.sv ;           ;
+; rtl/kronos_core/kronos_core.sv      ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_core.sv      ;           ;
+; rtl/kronos_core/kronos_branch.sv    ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_branch.sv    ;           ;
+; rtl/kronos_core/kronos_alu.sv       ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_alu.sv       ;           ;
+; rtl/kronos_core/kronos_agu.sv       ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_agu.sv       ;           ;
+; rtl/top.sv                          ; yes             ; User SystemVerilog HDL File            ; C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv                          ;           ;
+; qip/pll_clock.v                     ; yes             ; User Wizard-Generated File             ; C:/Users/Will/Documents/GitHub/riscv-fpga/qip/pll_clock.v                     ; pll_clock ;
+; qip/pll_clock/pll_clock_0002.v      ; yes             ; User Verilog HDL File                  ; C:/Users/Will/Documents/GitHub/riscv-fpga/qip/pll_clock/pll_clock_0002.v      ; pll_clock ;
+; qip/instr_rom.v                     ; yes             ; User Wizard-Generated File             ; C:/Users/Will/Documents/GitHub/riscv-fpga/qip/instr_rom.v                     ;           ;
+; altera_pll.v                        ; yes             ; Megafunction                           ; c:/intelfpga/20.1/quartus/libraries/megafunctions/altera_pll.v                ;           ;
+; altsyncram.tdf                      ; yes             ; Megafunction                           ; c:/intelfpga/20.1/quartus/libraries/megafunctions/altsyncram.tdf              ;           ;
+; stratix_ram_block.inc               ; yes             ; Megafunction                           ; c:/intelfpga/20.1/quartus/libraries/megafunctions/stratix_ram_block.inc       ;           ;
+; lpm_mux.inc                         ; yes             ; Megafunction                           ; c:/intelfpga/20.1/quartus/libraries/megafunctions/lpm_mux.inc                 ;           ;
+; lpm_decode.inc                      ; yes             ; Megafunction                           ; c:/intelfpga/20.1/quartus/libraries/megafunctions/lpm_decode.inc              ;           ;
+; aglobal201.inc                      ; yes             ; Megafunction                           ; c:/intelfpga/20.1/quartus/libraries/megafunctions/aglobal201.inc              ;           ;
+; a_rdenreg.inc                       ; yes             ; Megafunction                           ; c:/intelfpga/20.1/quartus/libraries/megafunctions/a_rdenreg.inc               ;           ;
+; altrom.inc                          ; yes             ; Megafunction                           ; c:/intelfpga/20.1/quartus/libraries/megafunctions/altrom.inc                  ;           ;
+; altram.inc                          ; yes             ; Megafunction                           ; c:/intelfpga/20.1/quartus/libraries/megafunctions/altram.inc                  ;           ;
+; altdpram.inc                        ; yes             ; Megafunction                           ; c:/intelfpga/20.1/quartus/libraries/megafunctions/altdpram.inc                ;           ;
+; db/altsyncram_5lg1.tdf              ; yes             ; Auto-Generated Megafunction            ; C:/Users/Will/Documents/GitHub/riscv-fpga/db/altsyncram_5lg1.tdf              ;           ;
+; pgm/instr.mif                       ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/Will/Documents/GitHub/riscv-fpga/pgm/instr.mif                       ;           ;
+; db/altsyncram_o002.tdf              ; yes             ; Auto-Generated Megafunction            ; C:/Users/Will/Documents/GitHub/riscv-fpga/db/altsyncram_o002.tdf              ;           ;
++-------------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------+-----------+
+
+
++-----------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                           ;
++---------------------------------------------+-------------------------+
+; Resource                                    ; Usage                   ;
++---------------------------------------------+-------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 1737                    ;
+;                                             ;                         ;
+; Combinational ALUT usage for logic          ; 1738                    ;
+;     -- 7 input functions                    ; 524                     ;
+;     -- 6 input functions                    ; 436                     ;
+;     -- 5 input functions                    ; 216                     ;
+;     -- 4 input functions                    ; 202                     ;
+;     -- <=3 input functions                  ; 360                     ;
+;                                             ;                         ;
+; Dedicated logic registers                   ; 1892                    ;
+;                                             ;                         ;
+; I/O pins                                    ; 168                     ;
+; Total MLAB memory bits                      ; 0                       ;
+; Total block memory bits                     ; 163840                  ;
+;                                             ;                         ;
+; Total DSP Blocks                            ; 0                       ;
+;                                             ;                         ;
+; Total PLLs                                  ; 1                       ;
+;     -- PLLs                                 ; 1                       ;
+;                                             ;                         ;
+; Maximum fan-out node                        ; clkdiv:U_CLKDIV|clk_out ;
+; Maximum fan-out                             ; 1925                    ;
+; Total fan-out                               ; 16939                   ;
+; Average fan-out                             ; 4.18                    ;
++---------------------------------------------+-------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                    ;
++----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------+------------------+--------------+
+; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                          ; Entity Name      ; Library Name ;
++----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------+------------------+--------------+
+; |rvfpga                                      ; 1738 (1)            ; 1892 (9)                  ; 163840            ; 0          ; 168  ; 0            ; |rvfpga                                                                                      ; rvfpga           ; work         ;
+;    |clkdiv:U_CLKDIV|                         ; 41 (41)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|clkdiv:U_CLKDIV                                                                      ; clkdiv           ; work         ;
+;    |data_ram:U_RAM_DATA|                     ; 0 (0)               ; 0 (0)                     ; 131072            ; 0          ; 0    ; 0            ; |rvfpga|data_ram:U_RAM_DATA                                                                  ; data_ram         ; work         ;
+;       |altsyncram:altsyncram_component|      ; 0 (0)               ; 0 (0)                     ; 131072            ; 0          ; 0    ; 0            ; |rvfpga|data_ram:U_RAM_DATA|altsyncram:altsyncram_component                                  ; altsyncram       ; work         ;
+;          |altsyncram_o002:auto_generated|    ; 0 (0)               ; 0 (0)                     ; 131072            ; 0          ; 0    ; 0            ; |rvfpga|data_ram:U_RAM_DATA|altsyncram:altsyncram_component|altsyncram_o002:auto_generated   ; altsyncram_o002  ; work         ;
+;    |hexdd:U_SEG0|                            ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|hexdd:U_SEG0                                                                         ; hexdd            ; work         ;
+;    |hexdd:U_SEG1|                            ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|hexdd:U_SEG1                                                                         ; hexdd            ; work         ;
+;    |hexdd:U_SEG5|                            ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|hexdd:U_SEG5                                                                         ; hexdd            ; work         ;
+;    |instr_rom:U_ROM_INSTR|                   ; 0 (0)               ; 0 (0)                     ; 32768             ; 0          ; 0    ; 0            ; |rvfpga|instr_rom:U_ROM_INSTR                                                                ; instr_rom        ; work         ;
+;       |altsyncram:altsyncram_component|      ; 0 (0)               ; 0 (0)                     ; 32768             ; 0          ; 0    ; 0            ; |rvfpga|instr_rom:U_ROM_INSTR|altsyncram:altsyncram_component                                ; altsyncram       ; work         ;
+;          |altsyncram_5lg1:auto_generated|    ; 0 (0)               ; 0 (0)                     ; 32768             ; 0          ; 0    ; 0            ; |rvfpga|instr_rom:U_ROM_INSTR|altsyncram:altsyncram_component|altsyncram_5lg1:auto_generated ; altsyncram_5lg1  ; work         ;
+;    |kronos_core:U_CORE|                      ; 1675 (0)            ; 1850 (0)                  ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|kronos_core:U_CORE                                                                   ; kronos_core      ; work         ;
+;       |kronos_EX:u_ex|                       ; 601 (220)           ; 373 (80)                  ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex                                                    ; kronos_EX        ; work         ;
+;          |kronos_alu:u_alu|                  ; 116 (116)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_alu:u_alu                                   ; kronos_alu       ; work         ;
+;          |kronos_csr:u_csr|                  ; 257 (193)           ; 293 (229)                 ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr                                   ; kronos_csr       ; work         ;
+;             |kronos_counter64:u_hpmcounter0| ; 32 (32)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|kronos_counter64:u_hpmcounter0    ; kronos_counter64 ; work         ;
+;             |kronos_counter64:u_hpmcounter1| ; 32 (32)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|kronos_counter64:u_hpmcounter1    ; kronos_counter64 ; work         ;
+;          |kronos_lsu:u_lsu|                  ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_lsu:u_lsu                                   ; kronos_lsu       ; work         ;
+;       |kronos_ID:u_id|                       ; 316 (231)           ; 181 (180)                 ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|kronos_core:U_CORE|kronos_ID:u_id                                                    ; kronos_ID        ; work         ;
+;          |kronos_agu:u_agu|                  ; 33 (33)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|kronos_core:U_CORE|kronos_ID:u_id|kronos_agu:u_agu                                   ; kronos_agu       ; work         ;
+;          |kronos_branch:u_branch|            ; 41 (41)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|kronos_core:U_CORE|kronos_ID:u_id|kronos_branch:u_branch                             ; kronos_branch    ; work         ;
+;          |kronos_hcu:u_hcu|                  ; 11 (11)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|kronos_core:U_CORE|kronos_ID:u_id|kronos_hcu:u_hcu                                   ; kronos_hcu       ; work         ;
+;       |kronos_IF:u_if|                       ; 758 (93)            ; 1296 (163)                ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|kronos_core:U_CORE|kronos_IF:u_if                                                    ; kronos_IF        ; work         ;
+;          |kronos_RF:u_rf|                    ; 665 (665)           ; 1133 (1133)               ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|kronos_core:U_CORE|kronos_IF:u_if|kronos_RF:u_rf                                     ; kronos_RF        ; work         ;
+;    |pll_clock:U_PLL|                         ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|pll_clock:U_PLL                                                                      ; pll_clock        ; pll_clock    ;
+;       |pll_clock_0002:pll_clock_inst|        ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|pll_clock:U_PLL|pll_clock_0002:pll_clock_inst                                        ; pll_clock_0002   ; pll_clock    ;
+;          |altera_pll:altera_pll_i|           ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |rvfpga|pll_clock:U_PLL|pll_clock_0002:pll_clock_inst|altera_pll:altera_pll_i                ; altera_pll       ; work         ;
++----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------+------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                 ;
++-------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+-----------------+
+; Name                                                                                            ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF             ;
++-------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+-----------------+
+; data_ram:U_RAM_DATA|altsyncram:altsyncram_component|altsyncram_o002:auto_generated|ALTSYNCRAM   ; AUTO ; Simple Dual Port ; 4096         ; 32           ; 4096         ; 32           ; 131072 ; None            ;
+; instr_rom:U_ROM_INSTR|altsyncram:altsyncram_component|altsyncram_5lg1:auto_generated|ALTSYNCRAM ; AUTO ; ROM              ; 1024         ; 32           ; --           ; --           ; 32768  ; ./pgm/instr.mif ;
++-------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+-----------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                           ;
++--------+--------------+---------+--------------+--------------+-------------------------------+-----------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance               ; IP Include File ;
++--------+--------------+---------+--------------+--------------+-------------------------------+-----------------+
+; Altera ; altera_pll   ; 20.1    ; N/A          ; N/A          ; |rvfpga|pll_clock:U_PLL       ; qip/pll_clock.v ;
+; Altera ; RAM: 2-PORT  ; 20.1    ; N/A          ; N/A          ; |rvfpga|data_ram:U_RAM_DATA   ; qip/data_ram.v  ;
+; Altera ; ROM: 1-PORT  ; 20.1    ; N/A          ; N/A          ; |rvfpga|instr_rom:U_ROM_INSTR ; qip/instr_rom.v ;
++--------+--------------+---------+--------------+--------------+-------------------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------+
+; State Machine - |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|state                                             ;
++--------------+------------+--------------+--------------+------------+-----------+-----------+--------------+
+; Name         ; state.JUMP ; state.WFINTR ; state.RETURN ; state.TRAP ; state.CSR ; state.LSU ; state.STEADY ;
++--------------+------------+--------------+--------------+------------+-----------+-----------+--------------+
+; state.STEADY ; 0          ; 0            ; 0            ; 0          ; 0         ; 0         ; 0            ;
+; state.LSU    ; 0          ; 0            ; 0            ; 0          ; 0         ; 1         ; 1            ;
+; state.CSR    ; 0          ; 0            ; 0            ; 0          ; 1         ; 0         ; 1            ;
+; state.TRAP   ; 0          ; 0            ; 0            ; 1          ; 0         ; 0         ; 1            ;
+; state.RETURN ; 0          ; 0            ; 1            ; 0          ; 0         ; 0         ; 1            ;
+; state.WFINTR ; 0          ; 1            ; 0            ; 0          ; 0         ; 0         ; 1            ;
+; state.JUMP   ; 1          ; 0            ; 0            ; 0          ; 0         ; 0         ; 1            ;
++--------------+------------+--------------+--------------+------------+-----------+-----------+--------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------+
+; State Machine - |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|state ;
++-------------+------------+-------------+-----------------------------------------+
+; Name        ; state.IDLE ; state.WRITE ; state.READ                              ;
++-------------+------------+-------------+-----------------------------------------+
+; state.IDLE  ; 0          ; 0           ; 0                                       ;
+; state.READ  ; 1          ; 0           ; 1                                       ;
+; state.WRITE ; 1          ; 1           ; 0                                       ;
++-------------+------------+-------------+-----------------------------------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------+
+; State Machine - |rvfpga|kronos_core:U_CORE|kronos_IF:u_if|state   ;
++-------------+-------------+------------+-------------+------------+
+; Name        ; state.STALL ; state.MISS ; state.FETCH ; state.INIT ;
++-------------+-------------+------------+-------------+------------+
+; state.INIT  ; 0           ; 0          ; 0           ; 0          ;
+; state.FETCH ; 0           ; 0          ; 1           ; 1          ;
+; state.MISS  ; 0           ; 1          ; 0           ; 1          ;
+; state.STALL ; 1           ; 0          ; 0           ; 1          ;
++-------------+-------------+------------+-------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                            ;
++-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+; Register name                                                                 ; Reason for Removal                                                            ;
++-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|mip.meip                   ; Stuck at GND due to stuck port data_in                                        ;
+; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|mip.mtip                   ; Stuck at GND due to stuck port data_in                                        ;
+; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|mip.msip                   ; Stuck at GND due to stuck port data_in                                        ;
+; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|core_interrupt             ; Stuck at GND due to stuck port data_in                                        ;
+; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|core_interrupt_cause[0..3] ; Lost fanout                                                                   ;
+; kronos_core:U_CORE|kronos_ID:u_id|decode.misaligned_ldst                      ; Stuck at GND due to stuck port data_in                                        ;
+; kronos_core:U_CORE|kronos_ID:u_id|decode.misaligned_jmp                       ; Stuck at GND due to stuck port data_in                                        ;
+; kronos_core:U_CORE|kronos_EX:u_ex|trap_cause[4..31]                           ; Merged with kronos_core:U_CORE|kronos_EX:u_ex|trap_cause[2]                   ;
+; kronos_core:U_CORE|kronos_ID:u_id|kronos_hcu:u_hcu|rpend[4]                   ; Merged with kronos_core:U_CORE|kronos_ID:u_id|decode.ir[11]                   ;
+; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|mepc[1]                    ; Merged with kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|mepc[0]        ;
+; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|trap_handle[1]             ; Merged with kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|trap_handle[0] ;
+; kronos_core:U_CORE|kronos_ID:u_id|kronos_hcu:u_hcu|rpend[3]                   ; Merged with kronos_core:U_CORE|kronos_ID:u_id|decode.ir[10]                   ;
+; kronos_core:U_CORE|kronos_ID:u_id|kronos_hcu:u_hcu|rpend[2]                   ; Merged with kronos_core:U_CORE|kronos_ID:u_id|decode.ir[9]                    ;
+; kronos_core:U_CORE|kronos_ID:u_id|kronos_hcu:u_hcu|rpend[1]                   ; Merged with kronos_core:U_CORE|kronos_ID:u_id|decode.ir[8]                    ;
+; kronos_core:U_CORE|kronos_ID:u_id|kronos_hcu:u_hcu|rpend[0]                   ; Merged with kronos_core:U_CORE|kronos_ID:u_id|decode.ir[7]                    ;
+; kronos_core:U_CORE|kronos_EX:u_ex|trap_cause[2]                               ; Stuck at GND due to stuck port data_in                                        ;
+; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|mepc[0]                    ; Stuck at GND due to stuck port data_in                                        ;
+; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|trap_handle[0]             ; Stuck at GND due to stuck port data_in                                        ;
+; kronos_core:U_CORE|kronos_EX:u_ex|trap_cause[1]                               ; Stuck at VCC due to stuck port data_in                                        ;
+; kronos_core:U_CORE|kronos_IF:u_if|state.MISS                                  ; Lost fanout                                                                   ;
+; kronos_core:U_CORE|kronos_EX:u_ex|state~4                                     ; Lost fanout                                                                   ;
+; kronos_core:U_CORE|kronos_EX:u_ex|state~5                                     ; Lost fanout                                                                   ;
+; kronos_core:U_CORE|kronos_EX:u_ex|state~6                                     ; Lost fanout                                                                   ;
+; kronos_core:U_CORE|kronos_IF:u_if|state~4                                     ; Lost fanout                                                                   ;
+; kronos_core:U_CORE|kronos_IF:u_if|state~5                                     ; Lost fanout                                                                   ;
+; kronos_core:U_CORE|kronos_IF:u_if|state.INIT                                  ; Lost fanout                                                                   ;
+; Total Number of Removed Registers = 56                                        ;                                                                               ;
++-------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                           ;
++-------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------+
+; Register name                                               ; Reason for Removal        ; Registers Removed due to This Register                                      ;
++-------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------+
+; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|mip.meip ; Stuck at GND              ; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|core_interrupt,          ;
+;                                                             ; due to stuck port data_in ; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|core_interrupt_cause[3], ;
+;                                                             ;                           ; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|core_interrupt_cause[2], ;
+;                                                             ;                           ; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|core_interrupt_cause[1], ;
+;                                                             ;                           ; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|core_interrupt_cause[0], ;
+;                                                             ;                           ; kronos_core:U_CORE|kronos_EX:u_ex|trap_cause[2],                            ;
+;                                                             ;                           ; kronos_core:U_CORE|kronos_EX:u_ex|trap_cause[1]                             ;
+; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|mepc[0]  ; Stuck at GND              ; kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|trap_handle[0]           ;
+;                                                             ; due to stuck port data_in ;                                                                             ;
+; kronos_core:U_CORE|kronos_IF:u_if|state~4                   ; Lost Fanouts              ; kronos_core:U_CORE|kronos_IF:u_if|state.INIT                                ;
++-------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1892  ;
+; Number of registers using Synchronous Clear  ; 197   ;
+; Number of registers using Synchronous Load   ; 397   ;
+; Number of registers using Asynchronous Clear ; 184   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1839  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------+
+; 3:1                ; 30 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|trap_handle[22]                              ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |rvfpga|clkdiv:U_CLKDIV|counter[12]                                                                     ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_IF:u_if|fetch.ir[23]                                                  ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|mepc[15]                                     ;
+; 3:1                ; 29 bits   ; 58 LEs        ; 0 LEs                ; 58 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|mcause[9]                                    ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|mcause[3]                                    ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|mtval[29]                                    ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|kronos_counter64:u_hpmcounter0|count_low[26] ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|kronos_counter64:u_hpmcounter1|count_low[23] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_ID:u_id|decode.mask[1]                                                ;
+; 4:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_IF:u_if|pc[14]                                                        ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_IF:u_if|kronos_RF:u_rf|immediate[3]                                   ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|trap_value[25]                                                ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|trap_cause[3]                                                 ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 0 LEs                ; 96 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_IF:u_if|kronos_RF:u_rf|regrd_rs1[12]                                  ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 0 LEs                ; 96 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_IF:u_if|kronos_RF:u_rf|regrd_rs2[0]                                   ;
+; 33:1               ; 32 bits   ; 704 LEs       ; 0 LEs                ; 704 LEs                ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_ID:u_id|decode.op1[2]                                                 ;
+; 35:1               ; 32 bits   ; 736 LEs       ; 160 LEs              ; 576 LEs                ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_ID:u_id|decode.op2[2]                                                 ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|csr_data[1]                                  ;
+; 10:1               ; 26 bits   ; 156 LEs       ; 156 LEs              ; 0 LEs                  ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|csr_data[21]                                 ;
+; 23:1               ; 6 bits    ; 90 LEs        ; 48 LEs               ; 42 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|regwr_data[6]                                                 ;
+; 24:1               ; 7 bits    ; 112 LEs       ; 70 LEs               ; 42 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|regwr_data[8]                                                 ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|csr_data[3]                                  ;
+; 26:1               ; 8 bits    ; 136 LEs       ; 80 LEs               ; 56 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|regwr_data[21]                                                ;
+; 29:1               ; 6 bits    ; 114 LEs       ; 78 LEs               ; 36 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|regwr_data[27]                                                ;
+; 32:1               ; 2 bits    ; 42 LEs        ; 28 LEs               ; 14 LEs                 ; Yes        ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|regwr_data[30]                                                ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_alu:u_alu|p2[30]                                       ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_alu:u_alu|p2[29]                                       ;
+; 4:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_alu:u_alu|p2[25]                                       ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_lsu:u_lsu|Mux24                                        ;
+; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; No         ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_alu:u_alu|p0[4]                                        ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |rvfpga|kronos_core:U_CORE|kronos_ID:u_id|sysop                                                         ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|Selector66                                   ;
+; 14:1               ; 4 bits    ; 36 LEs        ; 16 LEs               ; 20 LEs                 ; No         ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|Selector0                                                     ;
+; 14:1               ; 3 bits    ; 27 LEs        ; 12 LEs               ; 15 LEs                 ; No         ; |rvfpga|kronos_core:U_CORE|kronos_EX:u_ex|Selector5                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Source assignments for instr_rom:U_ROM_INSTR|altsyncram:altsyncram_component|altsyncram_5lg1:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                            ;
++---------------------------------+--------------------+------+-----------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                             ;
++---------------------------------+--------------------+------+-----------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Source assignments for data_ram:U_RAM_DATA|altsyncram:altsyncram_component|altsyncram_o002:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                          ;
++---------------------------------+--------------------+------+---------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                           ;
++---------------------------------+--------------------+------+---------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: pll_clock:U_PLL|pll_clock_0002:pll_clock_inst|altera_pll:altera_pll_i ;
++--------------------------------------+------------------------+----------------------------------------------------+
+; Parameter Name                       ; Value                  ; Type                                               ;
++--------------------------------------+------------------------+----------------------------------------------------+
+; reference_clock_frequency            ; 50.0 MHz               ; String                                             ;
+; fractional_vco_multiplier            ; false                  ; String                                             ;
+; pll_type                             ; General                ; String                                             ;
+; pll_subtype                          ; General                ; String                                             ;
+; number_of_clocks                     ; 1                      ; Signed Integer                                     ;
+; operation_mode                       ; direct                 ; String                                             ;
+; deserialization_factor               ; 4                      ; Signed Integer                                     ;
+; data_rate                            ; 0                      ; Signed Integer                                     ;
+; sim_additional_refclk_cycles_to_lock ; 0                      ; Signed Integer                                     ;
+; output_clock_frequency0              ; 5.000000 MHz           ; String                                             ;
+; phase_shift0                         ; 0 ps                   ; String                                             ;
+; duty_cycle0                          ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency1              ; 0 MHz                  ; String                                             ;
+; phase_shift1                         ; 0 ps                   ; String                                             ;
+; duty_cycle1                          ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency2              ; 0 MHz                  ; String                                             ;
+; phase_shift2                         ; 0 ps                   ; String                                             ;
+; duty_cycle2                          ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency3              ; 0 MHz                  ; String                                             ;
+; phase_shift3                         ; 0 ps                   ; String                                             ;
+; duty_cycle3                          ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency4              ; 0 MHz                  ; String                                             ;
+; phase_shift4                         ; 0 ps                   ; String                                             ;
+; duty_cycle4                          ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency5              ; 0 MHz                  ; String                                             ;
+; phase_shift5                         ; 0 ps                   ; String                                             ;
+; duty_cycle5                          ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency6              ; 0 MHz                  ; String                                             ;
+; phase_shift6                         ; 0 ps                   ; String                                             ;
+; duty_cycle6                          ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency7              ; 0 MHz                  ; String                                             ;
+; phase_shift7                         ; 0 ps                   ; String                                             ;
+; duty_cycle7                          ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency8              ; 0 MHz                  ; String                                             ;
+; phase_shift8                         ; 0 ps                   ; String                                             ;
+; duty_cycle8                          ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency9              ; 0 MHz                  ; String                                             ;
+; phase_shift9                         ; 0 ps                   ; String                                             ;
+; duty_cycle9                          ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency10             ; 0 MHz                  ; String                                             ;
+; phase_shift10                        ; 0 ps                   ; String                                             ;
+; duty_cycle10                         ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency11             ; 0 MHz                  ; String                                             ;
+; phase_shift11                        ; 0 ps                   ; String                                             ;
+; duty_cycle11                         ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency12             ; 0 MHz                  ; String                                             ;
+; phase_shift12                        ; 0 ps                   ; String                                             ;
+; duty_cycle12                         ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency13             ; 0 MHz                  ; String                                             ;
+; phase_shift13                        ; 0 ps                   ; String                                             ;
+; duty_cycle13                         ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency14             ; 0 MHz                  ; String                                             ;
+; phase_shift14                        ; 0 ps                   ; String                                             ;
+; duty_cycle14                         ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency15             ; 0 MHz                  ; String                                             ;
+; phase_shift15                        ; 0 ps                   ; String                                             ;
+; duty_cycle15                         ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency16             ; 0 MHz                  ; String                                             ;
+; phase_shift16                        ; 0 ps                   ; String                                             ;
+; duty_cycle16                         ; 50                     ; Signed Integer                                     ;
+; output_clock_frequency17             ; 0 MHz                  ; String                                             ;
+; phase_shift17                        ; 0 ps                   ; String                                             ;
+; duty_cycle17                         ; 50                     ; Signed Integer                                     ;
+; clock_name_0                         ;                        ; String                                             ;
+; clock_name_1                         ;                        ; String                                             ;
+; clock_name_2                         ;                        ; String                                             ;
+; clock_name_3                         ;                        ; String                                             ;
+; clock_name_4                         ;                        ; String                                             ;
+; clock_name_5                         ;                        ; String                                             ;
+; clock_name_6                         ;                        ; String                                             ;
+; clock_name_7                         ;                        ; String                                             ;
+; clock_name_8                         ;                        ; String                                             ;
+; clock_name_global_0                  ; false                  ; String                                             ;
+; clock_name_global_1                  ; false                  ; String                                             ;
+; clock_name_global_2                  ; false                  ; String                                             ;
+; clock_name_global_3                  ; false                  ; String                                             ;
+; clock_name_global_4                  ; false                  ; String                                             ;
+; clock_name_global_5                  ; false                  ; String                                             ;
+; clock_name_global_6                  ; false                  ; String                                             ;
+; clock_name_global_7                  ; false                  ; String                                             ;
+; clock_name_global_8                  ; false                  ; String                                             ;
+; m_cnt_hi_div                         ; 1                      ; Signed Integer                                     ;
+; m_cnt_lo_div                         ; 1                      ; Signed Integer                                     ;
+; m_cnt_bypass_en                      ; false                  ; String                                             ;
+; m_cnt_odd_div_duty_en                ; false                  ; String                                             ;
+; n_cnt_hi_div                         ; 1                      ; Signed Integer                                     ;
+; n_cnt_lo_div                         ; 1                      ; Signed Integer                                     ;
+; n_cnt_bypass_en                      ; false                  ; String                                             ;
+; n_cnt_odd_div_duty_en                ; false                  ; String                                             ;
+; c_cnt_hi_div0                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div0                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en0                     ; false                  ; String                                             ;
+; c_cnt_in_src0                        ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en0               ; false                  ; String                                             ;
+; c_cnt_prst0                          ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst0                   ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div1                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div1                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en1                     ; false                  ; String                                             ;
+; c_cnt_in_src1                        ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en1               ; false                  ; String                                             ;
+; c_cnt_prst1                          ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst1                   ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div2                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div2                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en2                     ; false                  ; String                                             ;
+; c_cnt_in_src2                        ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en2               ; false                  ; String                                             ;
+; c_cnt_prst2                          ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst2                   ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div3                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div3                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en3                     ; false                  ; String                                             ;
+; c_cnt_in_src3                        ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en3               ; false                  ; String                                             ;
+; c_cnt_prst3                          ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst3                   ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div4                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div4                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en4                     ; false                  ; String                                             ;
+; c_cnt_in_src4                        ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en4               ; false                  ; String                                             ;
+; c_cnt_prst4                          ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst4                   ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div5                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div5                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en5                     ; false                  ; String                                             ;
+; c_cnt_in_src5                        ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en5               ; false                  ; String                                             ;
+; c_cnt_prst5                          ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst5                   ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div6                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div6                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en6                     ; false                  ; String                                             ;
+; c_cnt_in_src6                        ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en6               ; false                  ; String                                             ;
+; c_cnt_prst6                          ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst6                   ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div7                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div7                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en7                     ; false                  ; String                                             ;
+; c_cnt_in_src7                        ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en7               ; false                  ; String                                             ;
+; c_cnt_prst7                          ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst7                   ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div8                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div8                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en8                     ; false                  ; String                                             ;
+; c_cnt_in_src8                        ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en8               ; false                  ; String                                             ;
+; c_cnt_prst8                          ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst8                   ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div9                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div9                        ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en9                     ; false                  ; String                                             ;
+; c_cnt_in_src9                        ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en9               ; false                  ; String                                             ;
+; c_cnt_prst9                          ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst9                   ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div10                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div10                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en10                    ; false                  ; String                                             ;
+; c_cnt_in_src10                       ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en10              ; false                  ; String                                             ;
+; c_cnt_prst10                         ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst10                  ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div11                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div11                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en11                    ; false                  ; String                                             ;
+; c_cnt_in_src11                       ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en11              ; false                  ; String                                             ;
+; c_cnt_prst11                         ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst11                  ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div12                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div12                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en12                    ; false                  ; String                                             ;
+; c_cnt_in_src12                       ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en12              ; false                  ; String                                             ;
+; c_cnt_prst12                         ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst12                  ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div13                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div13                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en13                    ; false                  ; String                                             ;
+; c_cnt_in_src13                       ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en13              ; false                  ; String                                             ;
+; c_cnt_prst13                         ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst13                  ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div14                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div14                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en14                    ; false                  ; String                                             ;
+; c_cnt_in_src14                       ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en14              ; false                  ; String                                             ;
+; c_cnt_prst14                         ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst14                  ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div15                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div15                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en15                    ; false                  ; String                                             ;
+; c_cnt_in_src15                       ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en15              ; false                  ; String                                             ;
+; c_cnt_prst15                         ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst15                  ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div16                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div16                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en16                    ; false                  ; String                                             ;
+; c_cnt_in_src16                       ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en16              ; false                  ; String                                             ;
+; c_cnt_prst16                         ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst16                  ; 0                      ; Signed Integer                                     ;
+; c_cnt_hi_div17                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_lo_div17                       ; 1                      ; Signed Integer                                     ;
+; c_cnt_bypass_en17                    ; false                  ; String                                             ;
+; c_cnt_in_src17                       ; ph_mux_clk             ; String                                             ;
+; c_cnt_odd_div_duty_en17              ; false                  ; String                                             ;
+; c_cnt_prst17                         ; 1                      ; Signed Integer                                     ;
+; c_cnt_ph_mux_prst17                  ; 0                      ; Signed Integer                                     ;
+; pll_vco_div                          ; 1                      ; Signed Integer                                     ;
+; pll_slf_rst                          ; false                  ; String                                             ;
+; pll_bw_sel                           ; low                    ; String                                             ;
+; pll_output_clk_frequency             ; 0 MHz                  ; String                                             ;
+; pll_cp_current                       ; 0                      ; Signed Integer                                     ;
+; pll_bwctrl                           ; 0                      ; Signed Integer                                     ;
+; pll_fractional_division              ; 1                      ; Signed Integer                                     ;
+; pll_fractional_cout                  ; 24                     ; Signed Integer                                     ;
+; pll_dsm_out_sel                      ; 1st_order              ; String                                             ;
+; mimic_fbclk_type                     ; gclk                   ; String                                             ;
+; pll_fbclk_mux_1                      ; glb                    ; String                                             ;
+; pll_fbclk_mux_2                      ; fb_1                   ; String                                             ;
+; pll_m_cnt_in_src                     ; ph_mux_clk             ; String                                             ;
+; pll_vcoph_div                        ; 1                      ; Signed Integer                                     ;
+; refclk1_frequency                    ; 0 MHz                  ; String                                             ;
+; pll_clkin_0_src                      ; clk_0                  ; String                                             ;
+; pll_clkin_1_src                      ; clk_0                  ; String                                             ;
+; pll_clk_loss_sw_en                   ; false                  ; String                                             ;
+; pll_auto_clk_sw_en                   ; false                  ; String                                             ;
+; pll_manu_clk_sw_en                   ; false                  ; String                                             ;
+; pll_clk_sw_dly                       ; 0                      ; Signed Integer                                     ;
+; pll_extclk_0_cnt_src                 ; pll_extclk_cnt_src_vss ; String                                             ;
+; pll_extclk_1_cnt_src                 ; pll_extclk_cnt_src_vss ; String                                             ;
++--------------------------------------+------------------------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: clkdiv:U_CLKDIV ;
++----------------+--------+------------------------------------+
+; Parameter Name ; Value  ; Type                               ;
++----------------+--------+------------------------------------+
+; DIVIDER        ; 250000 ; Signed Integer                     ;
++----------------+--------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: instr_rom:U_ROM_INSTR|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+----------------------------------------+
+; Parameter Name                     ; Value                ; Type                                   ;
++------------------------------------+----------------------+----------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                             ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                           ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                           ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                         ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                                ;
+; WIDTH_A                            ; 32                   ; Signed Integer                         ;
+; WIDTHAD_A                          ; 10                   ; Signed Integer                         ;
+; NUMWORDS_A                         ; 1024                 ; Signed Integer                         ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                ;
+; WIDTH_B                            ; 1                    ; Untyped                                ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                         ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                ;
+; INIT_FILE                          ; ./pgm/instr.mif      ; Untyped                                ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                ;
+; CBXI_PARAMETER                     ; altsyncram_5lg1      ; Untyped                                ;
++------------------------------------+----------------------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: data_ram:U_RAM_DATA|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+--------------------------------------+
+; Parameter Name                     ; Value                ; Type                                 ;
++------------------------------------+----------------------+--------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                              ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                           ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                         ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                         ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                       ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                              ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                              ;
+; WIDTH_A                            ; 32                   ; Signed Integer                       ;
+; WIDTHAD_A                          ; 12                   ; Signed Integer                       ;
+; NUMWORDS_A                         ; 4096                 ; Signed Integer                       ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                              ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                              ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                              ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                              ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                              ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                              ;
+; WIDTH_B                            ; 32                   ; Signed Integer                       ;
+; WIDTHAD_B                          ; 12                   ; Signed Integer                       ;
+; NUMWORDS_B                         ; 4096                 ; Signed Integer                       ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                              ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                              ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                              ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                              ;
+; OUTDATA_REG_B                      ; CLOCK0               ; Untyped                              ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                              ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                              ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                              ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                              ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                              ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                              ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                              ;
+; WIDTH_BYTEENA_A                    ; 4                    ; Signed Integer                       ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                              ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                              ;
+; BYTE_SIZE                          ; 8                    ; Signed Integer                       ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                              ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                              ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                              ;
+; INIT_FILE                          ; UNUSED               ; Untyped                              ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                              ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                              ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                              ;
+; CLOCK_ENABLE_INPUT_B               ; BYPASS               ; Untyped                              ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                              ;
+; CLOCK_ENABLE_OUTPUT_B              ; BYPASS               ; Untyped                              ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                              ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                              ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                              ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                              ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                              ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                              ;
+; CBXI_PARAMETER                     ; altsyncram_o002      ; Untyped                              ;
++------------------------------------+----------------------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: kronos_core:U_CORE            ;
++-----------------------+----------------------------------+-----------------+
+; Parameter Name        ; Value                            ; Type            ;
++-----------------------+----------------------------------+-----------------+
+; BOOT_ADDR             ; 00000000000000000000000000000000 ; Unsigned Binary ;
+; FAST_BRANCH           ; 0                                ; Signed Integer  ;
+; EN_COUNTERS           ; 1                                ; Signed Integer  ;
+; EN_COUNTERS64B        ; 0                                ; Signed Integer  ;
+; CATCH_ILLEGAL_INSTR   ; 1                                ; Signed Integer  ;
+; CATCH_MISALIGNED_JMP  ; 0                                ; Signed Integer  ;
+; CATCH_MISALIGNED_LDST ; 0                                ; Signed Integer  ;
++-----------------------+----------------------------------+-----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: kronos_core:U_CORE|kronos_IF:u_if ;
++----------------+----------------------------------+----------------------------+
+; Parameter Name ; Value                            ; Type                       ;
++----------------+----------------------------------+----------------------------+
+; BOOT_ADDR      ; 00000000000000000000000000000000 ; Unsigned Binary            ;
+; FAST_BRANCH    ; 0                                ; Signed Integer             ;
++----------------+----------------------------------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: kronos_core:U_CORE|kronos_ID:u_id ;
++-----------------------+-------+------------------------------------------------+
+; Parameter Name        ; Value ; Type                                           ;
++-----------------------+-------+------------------------------------------------+
+; CATCH_ILLEGAL_INSTR   ; 1     ; Signed Integer                                 ;
+; CATCH_MISALIGNED_JMP  ; 0     ; Signed Integer                                 ;
+; CATCH_MISALIGNED_LDST ; 0     ; Signed Integer                                 ;
++-----------------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: kronos_core:U_CORE|kronos_ID:u_id|kronos_agu:u_agu ;
++-----------------------+-------+-----------------------------------------------------------------+
+; Parameter Name        ; Value ; Type                                                            ;
++-----------------------+-------+-----------------------------------------------------------------+
+; CATCH_MISALIGNED_JMP  ; 0     ; Signed Integer                                                  ;
+; CATCH_MISALIGNED_LDST ; 0     ; Signed Integer                                                  ;
++-----------------------+-------+-----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: kronos_core:U_CORE|kronos_EX:u_ex ;
++----------------+----------------------------------+----------------------------+
+; Parameter Name ; Value                            ; Type                       ;
++----------------+----------------------------------+----------------------------+
+; BOOT_ADDR      ; 00000000000000000000000000000000 ; Unsigned Binary            ;
+; EN_COUNTERS    ; 1                                ; Signed Integer             ;
+; EN_COUNTERS64B ; 0                                ; Signed Integer             ;
++----------------+----------------------------------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr ;
++----------------+----------------------------------+---------------------------------------------+
+; Parameter Name ; Value                            ; Type                                        ;
++----------------+----------------------------------+---------------------------------------------+
+; BOOT_ADDR      ; 00000000000000000000000000000000 ; Unsigned Binary                             ;
+; EN_COUNTERS    ; 1                                ; Signed Integer                              ;
+; EN_COUNTERS64B ; 0                                ; Signed Integer                              ;
++----------------+----------------------------------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|kronos_counter64:u_hpmcounter0 ;
++----------------+-------+-------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                  ;
++----------------+-------+-------------------------------------------------------------------------------------------------------+
+; EN_COUNTERS    ; 1     ; Signed Integer                                                                                        ;
+; EN_COUNTERS64B ; 0     ; Signed Integer                                                                                        ;
++----------------+-------+-------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|kronos_counter64:u_hpmcounter1 ;
++----------------+-------+-------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                  ;
++----------------+-------+-------------------------------------------------------------------------------------------------------+
+; EN_COUNTERS    ; 1     ; Signed Integer                                                                                        ;
+; EN_COUNTERS64B ; 0     ; Signed Integer                                                                                        ;
++----------------+-------+-------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                  ;
++-------------------------------------------+-------------------------------------------------------+
+; Name                                      ; Value                                                 ;
++-------------------------------------------+-------------------------------------------------------+
+; Number of entity instances                ; 2                                                     ;
+; Entity Instance                           ; instr_rom:U_ROM_INSTR|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                                   ;
+;     -- WIDTH_A                            ; 32                                                    ;
+;     -- NUMWORDS_A                         ; 1024                                                  ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                          ;
+;     -- WIDTH_B                            ; 1                                                     ;
+;     -- NUMWORDS_B                         ; 1                                                     ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                             ;
+; Entity Instance                           ; data_ram:U_RAM_DATA|altsyncram:altsyncram_component   ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                             ;
+;     -- WIDTH_A                            ; 32                                                    ;
+;     -- NUMWORDS_A                         ; 4096                                                  ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                          ;
+;     -- WIDTH_B                            ; 32                                                    ;
+;     -- NUMWORDS_B                         ; 4096                                                  ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                ;
+;     -- OUTDATA_REG_B                      ; CLOCK0                                                ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                             ;
++-------------------------------------------+-------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|kronos_counter64:u_hpmcounter0" ;
++------+-------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                             ;
++------+-------+----------+-------------------------------------------------------------------------------------+
+; incr ; Input ; Info     ; Stuck at VCC                                                                        ;
++------+-------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "kronos_core:U_CORE"                                                                               ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port               ; Type   ; Severity ; Details                                                                             ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+; instr_addr[31..12] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; instr_addr[1..0]   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; instr_req          ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; instr_ack          ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; data_req           ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "data_ram:U_RAM_DATA"                                                                                                                                                                    ;
++-----------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port      ; Type  ; Severity ; Details                                                                                                                                                                             ;
++-----------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; rdaddress ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (12 bits) it drives.  The 20 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; wraddress ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (12 bits) it drives.  The 20 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-----------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 1892                        ;
+;     CLR               ; 19                          ;
+;     ENA               ; 1334                        ;
+;     ENA CLR           ; 71                          ;
+;     ENA CLR SLD       ; 94                          ;
+;     ENA SCLR          ; 37                          ;
+;     ENA SCLR SLD      ; 128                         ;
+;     ENA SLD           ; 175                         ;
+;     SCLR              ; 32                          ;
+;     plain             ; 2                           ;
+; arriav_io_obuf        ; 24                          ;
+; arriav_lcell_comb     ; 1742                        ;
+;     arith             ; 158                         ;
+;         1 data inputs ; 125                         ;
+;         2 data inputs ; 1                           ;
+;         5 data inputs ; 32                          ;
+;     extend            ; 524                         ;
+;         7 data inputs ; 524                         ;
+;     normal            ; 1027                        ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 69                          ;
+;         3 data inputs ; 145                         ;
+;         4 data inputs ; 186                         ;
+;         5 data inputs ; 184                         ;
+;         6 data inputs ; 436                         ;
+;     shared            ; 33                          ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 16                          ;
+;         4 data inputs ; 16                          ;
+; boundary_port         ; 168                         ;
+; generic_pll           ; 1                           ;
+; stratixv_ram_block    ; 64                          ;
+;                       ;                             ;
+; Max LUT depth         ; 9.00                        ;
+; Average LUT depth     ; 3.89                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:03     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.0 Build 711 06/05/2020 SJ Standard Edition
+    Info: Processing started: Mon Feb 22 19:44:08 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off rvfpga -c rvfpga
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/ifr.sv
+    Info (12023): Found entity 1: ifr File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/ifr.sv Line: 12
+Info (12021): Found 1 design units, including 1 entities, in source file qip/data_ram.v
+    Info (12023): Found entity 1: data_ram File: C:/Users/Will/Documents/GitHub/riscv-fpga/qip/data_ram.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/iodrivers/clkdiv.sv
+    Info (12023): Found entity 1: clkdiv File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/iodrivers/clkdiv.sv Line: 11
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/iodrivers/led.sv
+    Info (12023): Found entity 1: ledd File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/iodrivers/led.sv Line: 13
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/iodrivers/btn.sv
+    Info (12023): Found entity 1: btnd File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/iodrivers/btn.sv Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/iodrivers/hex.sv
+    Info (12023): Found entity 1: hexdd File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/iodrivers/hex.sv Line: 9
+Info (12021): Found 1 design units, including 0 entities, in source file rtl/kronos_core/kronos_types.sv
+    Info (12022): Found design unit 1: kronos_types (SystemVerilog) File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_types.sv Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/kronos_core/kronos_rf.sv
+    Info (12023): Found entity 1: kronos_RF File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_RF.sv Line: 12
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/kronos_core/kronos_lsu.sv
+    Info (12023): Found entity 1: kronos_lsu File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_lsu.sv Line: 14
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/kronos_core/kronos_if.sv
+    Info (12023): Found entity 1: kronos_IF File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_IF.sv Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/kronos_core/kronos_id.sv
+    Info (12023): Found entity 1: kronos_ID File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_ID.sv Line: 14
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/kronos_core/kronos_hcu.sv
+    Info (12023): Found entity 1: kronos_hcu File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_hcu.sv Line: 11
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/kronos_core/kronos_ex.sv
+    Info (12023): Found entity 1: kronos_EX File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_EX.sv Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/kronos_core/kronos_csr.sv
+    Info (12023): Found entity 1: kronos_csr File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_csr.sv Line: 29
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/kronos_core/kronos_counter64.sv
+    Info (12023): Found entity 1: kronos_counter64 File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_counter64.sv Line: 12
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/kronos_core/kronos_core.sv
+    Info (12023): Found entity 1: kronos_core File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_core.sv Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/kronos_core/kronos_branch.sv
+    Info (12023): Found entity 1: kronos_branch File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_branch.sv Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/kronos_core/kronos_alu.sv
+    Info (12023): Found entity 1: kronos_alu File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_alu.sv Line: 31
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/kronos_core/kronos_agu.sv
+    Info (12023): Found entity 1: kronos_agu File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_agu.sv Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/top.sv
+    Info (12023): Found entity 1: rvfpga File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file qip/pll_clock.v
+    Info (12023): Found entity 1: pll_clock File: C:/Users/Will/Documents/GitHub/riscv-fpga/qip/pll_clock.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file qip/pll_clock/pll_clock_0002.v
+    Info (12023): Found entity 1: pll_clock_0002 File: C:/Users/Will/Documents/GitHub/riscv-fpga/qip/pll_clock/pll_clock_0002.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file qip/instr_rom.v
+    Info (12023): Found entity 1: instr_rom File: C:/Users/Will/Documents/GitHub/riscv-fpga/qip/instr_rom.v Line: 40
+Warning (10236): Verilog HDL Implicit Net warning at top.sv(53): created implicit net for "clk_pll" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 53
+Info (12127): Elaborating entity "rvfpga" for the top level hierarchy
+Warning (10034): Output port "LEDR[7..0]" at top.sv(11) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+Warning (10034): Output port "HEX2" at top.sv(12) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+Warning (10034): Output port "HEX3" at top.sv(12) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+Warning (10034): Output port "HEX4" at top.sv(12) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+Warning (10034): Output port "DRAM_ADDR" at top.sv(14) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+Warning (10034): Output port "DRAM_BA" at top.sv(14) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+Warning (10034): Output port "VGA_B" at top.sv(18) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+Warning (10034): Output port "VGA_G" at top.sv(18) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+Warning (10034): Output port "VGA_R" at top.sv(18) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+Warning (10034): Output port "DRAM_CAS_N" at top.sv(14) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+Warning (10034): Output port "DRAM_CKE" at top.sv(14) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+Warning (10034): Output port "DRAM_CLK" at top.sv(14) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+Warning (10034): Output port "DRAM_CS_N" at top.sv(15) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+Warning (10034): Output port "DRAM_LDQM" at top.sv(15) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+Warning (10034): Output port "DRAM_RAS_N" at top.sv(15) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+Warning (10034): Output port "DRAM_UDQM" at top.sv(15) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+Warning (10034): Output port "DRAM_WE_N" at top.sv(15) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+Warning (10034): Output port "TD_RESET_N" at top.sv(17) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 17
+Warning (10034): Output port "VGA_BLANK_N" at top.sv(18) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+Warning (10034): Output port "VGA_CLK" at top.sv(18) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+Warning (10034): Output port "VGA_HS" at top.sv(18) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+Warning (10034): Output port "VGA_SYNC_N" at top.sv(18) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+Warning (10034): Output port "VGA_VS" at top.sv(18) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+Warning (10034): Output port "AUD_DACDAT" at top.sv(19) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 19
+Warning (10034): Output port "AUD_XCK" at top.sv(19) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 19
+Warning (10034): Output port "ADC_CONVST" at top.sv(21) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 21
+Warning (10034): Output port "ADC_DIN" at top.sv(21) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 21
+Warning (10034): Output port "ADC_SCLK" at top.sv(21) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 21
+Warning (10034): Output port "FPGA_I2C_SCLK" at top.sv(22) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 22
+Warning (10034): Output port "IRDA_TXD" at top.sv(24) has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 24
+Info (12128): Elaborating entity "pll_clock" for hierarchy "pll_clock:U_PLL" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 54
+Info (12128): Elaborating entity "pll_clock_0002" for hierarchy "pll_clock:U_PLL|pll_clock_0002:pll_clock_inst" File: C:/Users/Will/Documents/GitHub/riscv-fpga/qip/pll_clock.v Line: 19
+Info (12128): Elaborating entity "altera_pll" for hierarchy "pll_clock:U_PLL|pll_clock_0002:pll_clock_inst|altera_pll:altera_pll_i" File: C:/Users/Will/Documents/GitHub/riscv-fpga/qip/pll_clock/pll_clock_0002.v Line: 85
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
+Info (12130): Elaborated megafunction instantiation "pll_clock:U_PLL|pll_clock_0002:pll_clock_inst|altera_pll:altera_pll_i" File: C:/Users/Will/Documents/GitHub/riscv-fpga/qip/pll_clock/pll_clock_0002.v Line: 85
+Info (12133): Instantiated megafunction "pll_clock:U_PLL|pll_clock_0002:pll_clock_inst|altera_pll:altera_pll_i" with the following parameter: File: C:/Users/Will/Documents/GitHub/riscv-fpga/qip/pll_clock/pll_clock_0002.v Line: 85
+    Info (12134): Parameter "fractional_vco_multiplier" = "false"
+    Info (12134): Parameter "reference_clock_frequency" = "50.0 MHz"
+    Info (12134): Parameter "operation_mode" = "direct"
+    Info (12134): Parameter "number_of_clocks" = "1"
+    Info (12134): Parameter "output_clock_frequency0" = "5.000000 MHz"
+    Info (12134): Parameter "phase_shift0" = "0 ps"
+    Info (12134): Parameter "duty_cycle0" = "50"
+    Info (12134): Parameter "output_clock_frequency1" = "0 MHz"
+    Info (12134): Parameter "phase_shift1" = "0 ps"
+    Info (12134): Parameter "duty_cycle1" = "50"
+    Info (12134): Parameter "output_clock_frequency2" = "0 MHz"
+    Info (12134): Parameter "phase_shift2" = "0 ps"
+    Info (12134): Parameter "duty_cycle2" = "50"
+    Info (12134): Parameter "output_clock_frequency3" = "0 MHz"
+    Info (12134): Parameter "phase_shift3" = "0 ps"
+    Info (12134): Parameter "duty_cycle3" = "50"
+    Info (12134): Parameter "output_clock_frequency4" = "0 MHz"
+    Info (12134): Parameter "phase_shift4" = "0 ps"
+    Info (12134): Parameter "duty_cycle4" = "50"
+    Info (12134): Parameter "output_clock_frequency5" = "0 MHz"
+    Info (12134): Parameter "phase_shift5" = "0 ps"
+    Info (12134): Parameter "duty_cycle5" = "50"
+    Info (12134): Parameter "output_clock_frequency6" = "0 MHz"
+    Info (12134): Parameter "phase_shift6" = "0 ps"
+    Info (12134): Parameter "duty_cycle6" = "50"
+    Info (12134): Parameter "output_clock_frequency7" = "0 MHz"
+    Info (12134): Parameter "phase_shift7" = "0 ps"
+    Info (12134): Parameter "duty_cycle7" = "50"
+    Info (12134): Parameter "output_clock_frequency8" = "0 MHz"
+    Info (12134): Parameter "phase_shift8" = "0 ps"
+    Info (12134): Parameter "duty_cycle8" = "50"
+    Info (12134): Parameter "output_clock_frequency9" = "0 MHz"
+    Info (12134): Parameter "phase_shift9" = "0 ps"
+    Info (12134): Parameter "duty_cycle9" = "50"
+    Info (12134): Parameter "output_clock_frequency10" = "0 MHz"
+    Info (12134): Parameter "phase_shift10" = "0 ps"
+    Info (12134): Parameter "duty_cycle10" = "50"
+    Info (12134): Parameter "output_clock_frequency11" = "0 MHz"
+    Info (12134): Parameter "phase_shift11" = "0 ps"
+    Info (12134): Parameter "duty_cycle11" = "50"
+    Info (12134): Parameter "output_clock_frequency12" = "0 MHz"
+    Info (12134): Parameter "phase_shift12" = "0 ps"
+    Info (12134): Parameter "duty_cycle12" = "50"
+    Info (12134): Parameter "output_clock_frequency13" = "0 MHz"
+    Info (12134): Parameter "phase_shift13" = "0 ps"
+    Info (12134): Parameter "duty_cycle13" = "50"
+    Info (12134): Parameter "output_clock_frequency14" = "0 MHz"
+    Info (12134): Parameter "phase_shift14" = "0 ps"
+    Info (12134): Parameter "duty_cycle14" = "50"
+    Info (12134): Parameter "output_clock_frequency15" = "0 MHz"
+    Info (12134): Parameter "phase_shift15" = "0 ps"
+    Info (12134): Parameter "duty_cycle15" = "50"
+    Info (12134): Parameter "output_clock_frequency16" = "0 MHz"
+    Info (12134): Parameter "phase_shift16" = "0 ps"
+    Info (12134): Parameter "duty_cycle16" = "50"
+    Info (12134): Parameter "output_clock_frequency17" = "0 MHz"
+    Info (12134): Parameter "phase_shift17" = "0 ps"
+    Info (12134): Parameter "duty_cycle17" = "50"
+    Info (12134): Parameter "pll_type" = "General"
+    Info (12134): Parameter "pll_subtype" = "General"
+Info (12128): Elaborating entity "clkdiv" for hierarchy "clkdiv:U_CLKDIV" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 61
+Info (12128): Elaborating entity "ledd" for hierarchy "ledd:U_LED9" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 80
+Info (12128): Elaborating entity "btnd" for hierarchy "btnd:U_KEY0" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 83
+Info (12128): Elaborating entity "instr_rom" for hierarchy "instr_rom:U_ROM_INSTR" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 92
+Info (12128): Elaborating entity "altsyncram" for hierarchy "instr_rom:U_ROM_INSTR|altsyncram:altsyncram_component" File: C:/Users/Will/Documents/GitHub/riscv-fpga/qip/instr_rom.v Line: 82
+Info (12130): Elaborated megafunction instantiation "instr_rom:U_ROM_INSTR|altsyncram:altsyncram_component" File: C:/Users/Will/Documents/GitHub/riscv-fpga/qip/instr_rom.v Line: 82
+Info (12133): Instantiated megafunction "instr_rom:U_ROM_INSTR|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Will/Documents/GitHub/riscv-fpga/qip/instr_rom.v Line: 82
+    Info (12134): Parameter "address_aclr_a" = "NONE"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "./pgm/instr.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "1024"
+    Info (12134): Parameter "operation_mode" = "ROM"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "widthad_a" = "10"
+    Info (12134): Parameter "width_a" = "32"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_5lg1.tdf
+    Info (12023): Found entity 1: altsyncram_5lg1 File: C:/Users/Will/Documents/GitHub/riscv-fpga/db/altsyncram_5lg1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_5lg1" for hierarchy "instr_rom:U_ROM_INSTR|altsyncram:altsyncram_component|altsyncram_5lg1:auto_generated" File: c:/intelfpga/20.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "data_ram" for hierarchy "data_ram:U_RAM_DATA" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 105
+Info (12128): Elaborating entity "altsyncram" for hierarchy "data_ram:U_RAM_DATA|altsyncram:altsyncram_component" File: C:/Users/Will/Documents/GitHub/riscv-fpga/qip/data_ram.v Line: 92
+Info (12130): Elaborated megafunction instantiation "data_ram:U_RAM_DATA|altsyncram:altsyncram_component" File: C:/Users/Will/Documents/GitHub/riscv-fpga/qip/data_ram.v Line: 92
+Info (12133): Instantiated megafunction "data_ram:U_RAM_DATA|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Will/Documents/GitHub/riscv-fpga/qip/data_ram.v Line: 92
+    Info (12134): Parameter "address_aclr_b" = "NONE"
+    Info (12134): Parameter "address_reg_b" = "CLOCK0"
+    Info (12134): Parameter "byte_size" = "8"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_input_b" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_b" = "BYPASS"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "4096"
+    Info (12134): Parameter "numwords_b" = "4096"
+    Info (12134): Parameter "operation_mode" = "DUAL_PORT"
+    Info (12134): Parameter "outdata_aclr_b" = "NONE"
+    Info (12134): Parameter "outdata_reg_b" = "CLOCK0"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_mixed_ports" = "DONT_CARE"
+    Info (12134): Parameter "widthad_a" = "12"
+    Info (12134): Parameter "widthad_b" = "12"
+    Info (12134): Parameter "width_a" = "32"
+    Info (12134): Parameter "width_b" = "32"
+    Info (12134): Parameter "width_byteena_a" = "4"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_o002.tdf
+    Info (12023): Found entity 1: altsyncram_o002 File: C:/Users/Will/Documents/GitHub/riscv-fpga/db/altsyncram_o002.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_o002" for hierarchy "data_ram:U_RAM_DATA|altsyncram:altsyncram_component|altsyncram_o002:auto_generated" File: c:/intelfpga/20.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "hexdd" for hierarchy "hexdd:U_SEG0" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 107
+Info (12128): Elaborating entity "kronos_core" for hierarchy "kronos_core:U_CORE" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 139
+Info (12128): Elaborating entity "kronos_IF" for hierarchy "kronos_core:U_CORE|kronos_IF:u_if" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_core.sv Line: 88
+Info (12128): Elaborating entity "kronos_RF" for hierarchy "kronos_core:U_CORE|kronos_IF:u_if|kronos_RF:u_rf" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_IF.sv Line: 202
+Info (12128): Elaborating entity "kronos_ID" for hierarchy "kronos_core:U_CORE|kronos_ID:u_id" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_core.sv Line: 115
+Warning (10270): Verilog HDL Case Statement warning at kronos_ID.sv(190): incomplete case statement has no default case item File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_ID.sv Line: 190
+Warning (10270): Verilog HDL Case Statement warning at kronos_ID.sv(205): incomplete case statement has no default case item File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_ID.sv Line: 205
+Warning (10270): Verilog HDL Case Statement warning at kronos_ID.sv(220): incomplete case statement has no default case item File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_ID.sv Line: 220
+Warning (10270): Verilog HDL Case Statement warning at kronos_ID.sv(289): incomplete case statement has no default case item File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_ID.sv Line: 289
+Warning (10958): SystemVerilog warning at kronos_ID.sv(307): unique or priority keyword makes case statement complete File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_ID.sv Line: 307
+Info (12128): Elaborating entity "kronos_agu" for hierarchy "kronos_core:U_CORE|kronos_ID:u_id|kronos_agu:u_agu" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_ID.sv Line: 365
+Warning (10036): Verilog HDL or VHDL warning at kronos_agu.sv(24): object "data_size" assigned a value but never read File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_agu.sv Line: 24
+Warning (10036): Verilog HDL or VHDL warning at kronos_agu.sv(28): object "byte_addr" assigned a value but never read File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_agu.sv Line: 28
+Info (12128): Elaborating entity "kronos_branch" for hierarchy "kronos_core:U_CORE|kronos_ID:u_id|kronos_branch:u_branch" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_ID.sv Line: 374
+Info (12128): Elaborating entity "kronos_hcu" for hierarchy "kronos_core:U_CORE|kronos_ID:u_id|kronos_hcu:u_hcu" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_ID.sv Line: 390
+Info (12128): Elaborating entity "kronos_EX" for hierarchy "kronos_core:U_CORE|kronos_EX:u_ex" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_core.sv Line: 145
+Info (12128): Elaborating entity "kronos_alu" for hierarchy "kronos_core:U_CORE|kronos_EX:u_ex|kronos_alu:u_alu" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_EX.sv Line: 139
+Info (12128): Elaborating entity "kronos_lsu" for hierarchy "kronos_core:U_CORE|kronos_EX:u_ex|kronos_lsu:u_lsu" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_EX.sv Line: 158
+Info (12128): Elaborating entity "kronos_csr" for hierarchy "kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_EX.sv Line: 270
+Warning (10270): Verilog HDL Case Statement warning at kronos_csr.sv(188): incomplete case statement has no default case item File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_csr.sv Line: 188
+Info (10041): Inferred latch for "mtvec.mode[0]" at kronos_csr.sv(235) File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_csr.sv Line: 235
+Info (10041): Inferred latch for "mtvec.mode[1]" at kronos_csr.sv(235) File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_csr.sv Line: 235
+Info (10041): Inferred latch for "mstatus.mpp[0]" at kronos_csr.sv(235) File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_csr.sv Line: 235
+Info (10041): Inferred latch for "mstatus.mpp[1]" at kronos_csr.sv(235) File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_csr.sv Line: 235
+Info (12128): Elaborating entity "kronos_counter64" for hierarchy "kronos_core:U_CORE|kronos_EX:u_ex|kronos_csr:u_csr|kronos_counter64:u_hpmcounter0" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_csr.sv Line: 349
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "kronos_core:U_CORE|kronos_IF:u_if|kronos_RF:u_rf|REG" is uninferred due to asynchronous read logic File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_RF.sv Line: 148
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13039): The following bidirectional pins have no drivers
+    Warning (13040): bidirectional pin "DRAM_DQ[0]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[1]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[2]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[3]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[4]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[5]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[6]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[7]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[8]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[9]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[10]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[11]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[12]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[13]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[14]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "DRAM_DQ[15]" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13040): bidirectional pin "AUD_ADCLRCK" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 19
+    Warning (13040): bidirectional pin "AUD_BCLK" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 19
+    Warning (13040): bidirectional pin "AUD_DACLRCK" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 19
+    Warning (13040): bidirectional pin "PS2_CLK" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 20
+    Warning (13040): bidirectional pin "PS2_CLK2" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 20
+    Warning (13040): bidirectional pin "PS2_DAT" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 20
+    Warning (13040): bidirectional pin "PS2_DAT2" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 20
+    Warning (13040): bidirectional pin "FPGA_I2C_SDAT" has no driver File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 22
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LEDR[0]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (13410): Pin "LEDR[1]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (13410): Pin "HEX2[0]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX2[1]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX2[2]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX2[3]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX2[4]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX2[5]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX2[6]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX3[0]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX3[1]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX3[2]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX3[3]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX3[4]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX3[5]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX3[6]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX4[0]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX4[1]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX4[2]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX4[3]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX4[4]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX4[5]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "HEX4[6]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 12
+    Warning (13410): Pin "DRAM_ADDR[0]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_ADDR[1]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_ADDR[2]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_ADDR[3]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_ADDR[4]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_ADDR[5]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_ADDR[6]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_ADDR[7]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_ADDR[8]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_ADDR[9]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_ADDR[10]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_ADDR[11]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_ADDR[12]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_BA[0]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_BA[1]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_CAS_N" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_CKE" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_CLK" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 14
+    Warning (13410): Pin "DRAM_CS_N" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13410): Pin "DRAM_LDQM" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13410): Pin "DRAM_RAS_N" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13410): Pin "DRAM_UDQM" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13410): Pin "DRAM_WE_N" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 15
+    Warning (13410): Pin "TD_RESET_N" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 17
+    Warning (13410): Pin "VGA_BLANK_N" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_B[0]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_B[1]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_B[2]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_B[3]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_B[4]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_B[5]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_B[6]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_B[7]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_CLK" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_G[0]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_G[1]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_G[2]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_G[3]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_G[4]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_G[5]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_G[6]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_G[7]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_HS" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_R[0]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_R[1]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_R[2]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_R[3]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_R[4]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_R[5]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_R[6]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_R[7]" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "VGA_VS" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 18
+    Warning (13410): Pin "AUD_DACDAT" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 19
+    Warning (13410): Pin "AUD_XCK" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 19
+    Warning (13410): Pin "ADC_CONVST" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 21
+    Warning (13410): Pin "ADC_DIN" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 21
+    Warning (13410): Pin "ADC_SCLK" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 21
+    Warning (13410): Pin "FPGA_I2C_SCLK" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 22
+    Warning (13410): Pin "IRDA_TXD" is stuck at GND File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 24
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 11 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/Will/Documents/GitHub/riscv-fpga/rvfpga.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 29 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "CLOCK2_50" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 10
+    Warning (15610): No output dependent on input pin "CLOCK3_50" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 10
+    Warning (15610): No output dependent on input pin "CLOCK4_50" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 10
+    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "KEY[3]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "TD_CLK27" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 17
+    Warning (15610): No output dependent on input pin "TD_DATA[0]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 17
+    Warning (15610): No output dependent on input pin "TD_DATA[1]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 17
+    Warning (15610): No output dependent on input pin "TD_DATA[2]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 17
+    Warning (15610): No output dependent on input pin "TD_DATA[3]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 17
+    Warning (15610): No output dependent on input pin "TD_DATA[4]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 17
+    Warning (15610): No output dependent on input pin "TD_DATA[5]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 17
+    Warning (15610): No output dependent on input pin "TD_DATA[6]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 17
+    Warning (15610): No output dependent on input pin "TD_DATA[7]" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 17
+    Warning (15610): No output dependent on input pin "TD_HS" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 17
+    Warning (15610): No output dependent on input pin "TD_VS" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 17
+    Warning (15610): No output dependent on input pin "AUD_ADCDAT" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 19
+    Warning (15610): No output dependent on input pin "ADC_DOUT" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 21
+    Warning (15610): No output dependent on input pin "IRDA_RXD" File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/top.sv Line: 23
+Info (21057): Implemented 3490 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 32 input pins
+    Info (21059): Implemented 112 output pins
+    Info (21060): Implemented 24 bidirectional pins
+    Info (21061): Implemented 3257 logic cells
+    Info (21064): Implemented 64 RAM segments
+    Info (21065): Implemented 1 PLLs
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 186 warnings
+    Info: Peak virtual memory: 4858 megabytes
+    Info: Processing ended: Mon Feb 22 19:44:22 2021
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:23
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/Will/Documents/GitHub/riscv-fpga/rvfpga.map.smsg.
+
+

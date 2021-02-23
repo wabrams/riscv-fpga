@@ -1,0 +1,20 @@
+Fitter Status : Successful - Mon Feb 22 19:45:27 2021
+Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Standard Edition
+Revision Name : rvfpga
+Top-level Entity Name : rvfpga
+Family : Cyclone V
+Device : 5CSXFC6D6F31C6
+Timing Models : Final
+Logic utilization (in ALMs) : 1,513 / 41,910 ( 4 % )
+Total registers : 1932
+Total pins : 168 / 499 ( 34 % )
+Total virtual pins : 0
+Total block memory bits : 163,840 / 5,662,720 ( 3 % )
+Total RAM Blocks : 20 / 553 ( 4 % )
+Total DSP Blocks : 0 / 112 ( 0 % )
+Total HSSI RX PCSs : 0 / 9 ( 0 % )
+Total HSSI PMA RX Deserializers : 0 / 9 ( 0 % )
+Total HSSI TX PCSs : 0 / 9 ( 0 % )
+Total HSSI PMA TX Serializers : 0 / 9 ( 0 % )
+Total PLLs : 1 / 15 ( 7 % )
+Total DLLs : 0 / 4 ( 0 % )

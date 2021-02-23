@@ -1,0 +1,1 @@
+Info (10281): Verilog HDL Declaration information at kronos_IF.sv(39): object "fetch" differs only in case from object "FETCH" in the same scope File: C:/Users/Will/Documents/GitHub/riscv-fpga/rtl/kronos_core/kronos_IF.sv Line: 39
